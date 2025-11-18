@@ -1,392 +1,423 @@
-# 🚗 Mister Lavaggio - Website Rebuild
-
-Rebuild completo del sito Mister Lavaggio con focus su **performance**, **UX** e **manutenibilità**.
-
----
-
-## 📋 INDICE
-
-- [Obiettivo](#obiettivo)
-- [Stack Tecnologico](#stack-tecnologico)
-- [Metriche Performance](#metriche-performance)
-- [Struttura Progetto](#struttura-progetto)
-- [Design System](#design-system)
-- [Pagine & Stato](#pagine--stato)
-- [Setup Locale](#setup-locale)
-- [Deployment](#deployment)
-- [Roadmap](#roadmap)
-
----
-
-## 🎯 OBIETTIVO
-
-**Ricostruire il sito https://www.misterlavaggio.com con:**
-
-- ✅ Performance 10x migliori (da PageSpeed 34 → 90+)
-- ✅ Contenuti e brand identity identici
-- ✅ UI modernizzata ma riconoscibile
-- ✅ Codice pulito, modulare, manutenibile
-- ✅ Zero dipendenze inutili
-
-**NON è un redesign. È un rebuild tecnico.**
-
----
-
-## 🛠 STACK TECNOLOGICO
-
-### Core
-- **React 18** - UI framework
-- **Vite** - Build tool (velocissimo)
-- **React Router 6** - Routing
-- **Tailwind CSS** - Styling
-
-### Form & Email
-- **React Hook Form** - Form validation
-- **EmailJS** - Invio email (form contatti, prenotazioni)
-
-### Hosting & Deploy
-- **Vercel** - Hosting (free tier)
-- **GitHub** - Version control
-
-### Performance
-- **WebP/AVIF** - Immagini ottimizzate
-- **Lazy loading** - Code splitting automatico
-- **Tree shaking** - Solo codice usato nel bundle
-
----
-
-## 📊 METRICHE PERFORMANCE
-
-### Target Obiettivo
-
-| Metrica | Sito Attuale | Target Rebuild | Stato |
-|---------|--------------|----------------|-------|
-| **PageSpeed Mobile** | 34/100 🔴 | 90+/100 🟢 | 🚧 |
-| **LCP** | 3.7s | <1.5s | 🚧 |
-| **FCP** | 2.3s | <1.0s | 🚧 |
-| **Bundle Size** | ~4.3MB | <650KB | 🚧 |
-
-### Audit Attuale (Baseline)
-Performance: 34/100
-Accessibilità: 84/100
-Best Practices: 100/100
-SEO: 100/100
-Core Web Vitals:
-LCP: 3.7s (FAIL)
-INP: 157ms (GOOD)
-CLS: 0.01 (GOOD)
-Problemi identificati:
-Immagini non ottimizzate (~3MB)
-CSS/JS bundle pesanti (~800KB+)
-Render-blocking resources
-No lazy loading
----
-
-## 📁 STRUTTURA PROGETTO
-mister-lavaggio/
-├── public/
-│   ├── images/              # Immagini ottimizzate (WebP/AVIF)
-│   └── fonts/               # Font web ottimizzati
+📋 PIANO COMPLETO AGENCY DASHBOARD DEMO
+🎯 OBIETTIVO FINALE
+Creare demo funzionante multi-role dashboard da mostrare a Meraviglia Lab domani per:
+Dimostrare capacità tecniche concrete
+Proporre partnership white-label web dev
+Vendere app interna custom (€4.500 setup + €200/mese)
+🏗️ ARCHITETTURA PROGETTO
+Nome Progetto:
+agency-dashboard-demo
+Tech Stack:
+- React 18.2 + Vite 5.0
+- Tailwind CSS 3.3
+- React Router 6.20
+- Lucide React (icons)
+- Context API (state management)
+- LocalStorage (persistence - NO backend)
+Motivazione Stack:
+React + Vite = Performance 95+ garantita (dimostri value prop)
+Tailwind = Rapid UI development, mobile-first
+No backend = Deploy istantaneo, zero complessità
+LocalStorage = Simula funzionalità senza API
+👥 TRE RUOLI UTENTE
+1. CLIENT (Cliente Agenzia)
+Cosa vede:
+Dashboard: Progetti attivi, budget remaining, prossime deadline
+Progetti: Lista dettagliata con progress bars
+Report: Report mensili performance (mock PDF download)
+Comunicazioni: Thread con account manager
+Valore per Meraviglia Lab:
+"I vostri clienti vedono sempre status aggiornato. Zero email 'a che punto siamo?'"
+2. TEAM (Account Manager / Content Creator)
+Cosa vede:
+Dashboard: Task oggi, clienti attivi, alerts urgenti
+Content Calendar: Piano editoriale con drag-drop scheduling
+Task Board: Kanban (To Do | In Progress | Review | Done)
+Client Management: Lista tutti clienti + quick actions
+Valore per Meraviglia Lab:
+"Team vede tutto in un posto. Zero WhatsApp caos, zero dimenticare task."
+3. BOSS (Owner / Manager Agenzia)
+Cosa vede:
+Dashboard: Revenue, active clients, team utilization KPI
+Analytics: Grafici performance progetti (spend vs budget)
+Team Performance: Chi fa cosa, productivity metrics
+Revenue Tracking: Forecast mensile
+Valore per Meraviglia Lab:
+"Voi vedete numeri decisione-making. Non operatività, solo strategic overview."
+📁 STRUTTURA FILE COMPLETA
+agency-dashboard-demo/
+├── package.json                   ✅ FATTO
+├── vite.config.js                 ✅ FATTO
+├── tailwind.config.js             ✅ FATTO
+├── postcss.config.js              ✅ FATTO
+├── index.html                     ✅ FATTO
+├── README.md                      ✅ FATTO (istruzioni complete)
+│
 ├── src/
+│   ├── main.jsx                   ✅ FATTO
+│   ├── index.css                  ✅ FATTO
+│   ├── App.jsx                    ⚠️ TODO - Router + auth logic
+│   │
+│   ├── contexts/
+│   │   └── AuthContext.jsx        ✅ FATTO - Mock auth 3 ruoli
+│   │
+│   ├── data/
+│   │   ├── mockClients.js         ✅ FATTO - 10 clienti
+│   │   ├── mockProjects.js        ✅ FATTO - 10 progetti
+│   │   ├── mockTasks.js           ⚠️ TODO - 30 task
+│   │   ├── mockReports.js         ⚠️ TODO - Report mensili
+│   │   └── mockContent.js         ⚠️ TODO - Content calendar
+│   │
 │   ├── components/
-│   │   ├── layout/          # Header, Footer, Layout
-│   │   ├── ui/              # Button, Card, Container (reusable)
-│   │   ├── sections/        # Hero, ServicesGrid, Testimonials
-│   │   └── forms/           # ContactForm, BookingForm
-│   ├── pages/               # Route pages
-│   │   ├── Home.jsx
-│   │   ├── Servizi.jsx
-│   │   ├── Aziende.jsx
-│   │   ├── PrenotaOra.jsx
-│   │   ├── ChiSiamo.jsx
-│   │   ├── News.jsx
-│   │   └── LavoraConNoi.jsx
-│   ├── data/                # JSON statici (servizi, news, etc)
-│   ├── utils/               # Helper functions (emailService, etc)
-│   ├── styles/              # Global CSS
-│   ├── App.jsx              # Router setup
-│   └── main.jsx             # Entry point
-├── .env.example             # Environment variables template
-├── package.json
-├── tailwind.config.js
-├── vite.config.js
-└── README.md
----
+│   │   ├── ui/
+│   │   │   ├── Button.jsx         ✅ FATTO
+│   │   │   ├── Card.jsx           ⚠️ TODO
+│   │   │   ├── Badge.jsx          ⚠️ TODO
+│   │   │   ├── Modal.jsx          ⚠️ TODO (opzionale)
+│   │   │   ├── Tabs.jsx           ⚠️ TODO (opzionale)
+│   │   │   └── StatCard.jsx       ⚠️ TODO
+│   │   │
+│   │   └── layout/
+│   │       ├── Header.jsx         ⚠️ TODO
+│   │       ├── Sidebar.jsx        ⚠️ TODO
+│   │       └── Layout.jsx         ⚠️ TODO
+│   │
+│   └── views/
+│       ├── Login.jsx              ⚠️ TODO - Role selector
+│       │
+│       ├── client/
+│       │   ├── ClientDashboard.jsx    ⚠️ TODO
+│       │   ├── ClientProjects.jsx     ⚠️ TODO (opzionale)
+│       │   └── ClientReports.jsx      ⚠️ TODO (opzionale)
+│       │
+│       ├── team/
+│       │   ├── TeamDashboard.jsx      ⚠️ TODO
+│       │   ├── ContentCalendar.jsx    ⚠️ TODO (opzionale)
+│       │   ├── TaskBoard.jsx          ⚠️ TODO (opzionale)
+│       │   └── ClientList.jsx         ⚠️ TODO (opzionale)
+│       │
+│       └── boss/
+│           ├── BossDashboard.jsx      ⚠️ TODO
+│           ├── TeamPerformance.jsx    ⚠️ TODO (opzionale)
+│           └── Revenue.jsx            ⚠️ TODO (opzionale)
+🎯 MVP SCOPE (Demo Domani)
+MUST HAVE (Priorità 1):
+✅ Setup base (package, config)
+✅ Mock data (clients, projects)
+✅ AuthContext (role switching)
+✅ Button component
 
-## 🎨 DESIGN SYSTEM
-
-### Colori Brand
-
-> 🔍 **TODO**: Estrarre colori esatti dal sito attuale
-
-```js
-// Palette preliminare (da verificare)
-colors: {
-  primary: {
-    50: '#eff6ff',
-    100: '#dbeafe',
-    500: '#3b82f6',  // Blu principale
-    600: '#2563eb',
-    700: '#1d4ed8',
+⚠️ App.jsx con routing
+⚠️ Login screen (scelta ruolo)
+⚠️ Layout (Header + Sidebar)
+⚠️ Card component
+⚠️ Badge component
+⚠️ StatCard component
+⚠️ 3 Dashboard views (minimal ma funzionanti):
+   - ClientDashboard
+   - TeamDashboard
+   - BossDashboard
+NICE TO HAVE (Priorità 2 - se c'è tempo):
+- Task Board Kanban
+- Content Calendar
+- Project detail pages
+- Chart components (grafici)
+SKIP (Non necessario per demo):
+- Authentication reale
+- Backend integration
+- Email notifications
+- PDF generation reale
+- Drag & drop avanzato
+💡 FILOSOFIA DESIGN
+Principi:
+Function over form - Funziona bene > Bello
+Mobile-first - Responsive da subito
+Production patterns - Error handling, loading states
+Clean code - Commentato, manutenibile
+Performance - Lazy loading, code splitting
+UI Style:
+- Clean, minimal, professional
+- Color: Primary blue (#3b82f6)
+- Typography: System fonts
+- Spacing: Consistent (4px grid)
+- Cards: Shadow subtle, rounded corners
+- Mobile: Stack on small screens
+📊 MOCK DATA STRUCTURE
+mockTasks.js (da creare):
+{
+  id: number,
+  clientId: number,
+  title: string,
+  description: string,
+  status: 'todo' | 'in-progress' | 'review' | 'done',
+  priority: 'low' | 'medium' | 'high',
+  assignedTo: string,
+  dueDate: string (ISO),
+  createdAt: string (ISO)
+}
+mockReports.js (da creare):
+{
+  id: number,
+  clientId: number,
+  month: string,
+  year: number,
+  metrics: {
+    impressions: number,
+    clicks: number,
+    conversions: number,
+    spend: number,
+    ctr: number,
+    cpc: number
   },
-  secondary: {...},
-  accent: {...}
+  generatedAt: string (ISO),
+  pdfUrl: string (mock)
 }
-Tipografia
-🔍 TODO: Identificare font esatti usati
-Heading: [Font da estrarre]
-Body: [Font da estrarre]
-Componenti UI Base
-Tutti i componenti base sono in src/components/ui/:
-Button
-<Button variant="primary" size="lg">
-  Prenota Ora
-</Button>
+mockContent.js (da creare):
+{
+  id: number,
+  clientId: number,
+  platform: 'instagram' | 'facebook' | 'linkedin',
+  postText: string,
+  imageUrl: string (mock),
+  scheduledDate: string (ISO),
+  status: 'draft' | 'scheduled' | 'published',
+  approvedBy: string | null,
+  approvedAt: string (ISO) | null
+}
+🔧 COMPONENT SPECIFICATIONS
+Card.jsx:
+Props:
+- title: string (opzionale)
+- children: ReactNode
+- actions: ReactNode (opzionale - es. buttons header)
+- className: string
+- hover: boolean (hover effect)
+Badge.jsx:
+Props:
+- variant: 'success' | 'warning' | 'danger' | 'info' | 'default'
+- children: string
+- size: 'sm' | 'md'
 
-// Variants: primary | secondary | outline
-// Sizes: sm | md | lg
-Card
-<Card hover={true}>
-  {/* Contenuto */}
-</Card>
-Container
-<Container>
-  {/* Contenuto centrato con padding responsive */}
-</Container>
-Spaziature
-Sezioni: py-16 md:py-24 (64px → 96px)
-Gap elementi: gap-6 md:gap-8 (24px → 32px)
-Container padding: px-4 sm:px-6 lg:px-8
-📄 PAGINE & STATO
-Sitemap
-/                    → Home
-/servizi             → Servizi Lavaggio
-/aziende             → Lavaggio Auto Aziende
-/prenota             → Form Prenotazione
-/chi-siamo           → Rivoluzione Lavaggio Auto
-/news                → Blog/News
-/lavora-con-noi      → Candidature Lavoro
-Stato Completamento
-Pagina
-Analisi
-UI
-Form
-Mobile
-Deploy
-Stato
-Home
-⬜
-⬜
--
-⬜
-⬜
-🚧 Non iniziata
-Servizi
-⬜
-⬜
--
-⬜
-⬜
-🚧 Non iniziata
-Aziende
-⬜
-⬜
-✅
-⬜
-⬜
-🚧 Non iniziata
-Prenota Ora
-⬜
-⬜
-⬜
-⬜
-⬜
-🚧 Non iniziata
-Chi Siamo
-⬜
-⬜
--
-⬜
-⬜
-🚧 Non iniziata
-News
-⬜
-⬜
--
-⬜
-⬜
-🚧 Non iniziata
-Lavora Con Noi
-⬜
-⬜
-✅
-⬜
-⬜
-🚧 Non iniziata
-Legenda:
-✅ = Completato
-🚧 = In lavorazione
-⬜ = Da fare
-❌ = Bloccato
-🚀 SETUP LOCALE
-Prerequisiti
-Node.js >= 18.x
-npm >= 9.x
-Installazione
-# Clone repo
-git clone [URL_REPO]
-cd mister-lavaggio
+Esempi:
+<Badge variant="success">Attivo</Badge>
+<Badge variant="warning">In Revisione</Badge>
+<Badge variant="danger">Scaduto</Badge>
+StatCard.jsx:
+Props:
+- title: string
+- value: string | number
+- change: string (es. "+12%")
+- trend: 'up' | 'down' | 'neutral'
+- icon: LucideIcon
+- className: string
 
-# Installa dipendenze
-npm install
+Esempio:
+<StatCard 
+  title="Clienti Attivi" 
+  value="8" 
+  change="+2 da mese scorso"
+  trend="up"
+  icon={Users}
+/>
+Layout.jsx:
+Props:
+- children: ReactNode
 
-# Copia env variables
-cp .env.example .env
+Struttura:
+<div className="flex h-screen">
+  <Sidebar />
+  <div className="flex-1 flex flex-col">
+    <Header />
+    <main className="flex-1 overflow-y-auto p-6">
+      {children}
+    </main>
+  </div>
+</div>
+🎭 DEMO FLOW UTENTE
+1. Login Screen:
+Titolo: "Agency Dashboard Demo"
+Subtitle: "Scegli il tuo ruolo per esplorare"
 
-# Configura EmailJS credentials in .env
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_PUBLIC_KEY=your_public_key
-Comandi
-# Dev server (http://localhost:5173)
-npm run dev
+3 Card cliccabili:
+┌─────────────────┐
+│  👤 Cliente     │
+│  Vedi i tuoi    │
+│  progetti       │
+└─────────────────┘
 
-# Build produzione
+┌─────────────────┐
+│  👩‍💼 Team       │
+│  Gestisci       │
+│  clienti        │
+└─────────────────┘
+
+┌─────────────────┐
+│  👨‍💼 Boss       │
+│  Analytics      │
+│  overview       │
+└─────────────────┘
+
+Click → Login → Redirect a dashboard
+2. Dashboard Views:
+CLIENT:
+Header: "Benvenuto, Mario Rossi" + Logout
+
+Cards:
+- Progetti Attivi (2)
+- Budget Rimanente (€1.200)
+- Prossima Deadline (15 Nov)
+
+Lista progetti con:
+- Nome progetto
+- Progress bar
+- Status badge
+- Budget spent/total
+TEAM:
+Header: "Benvenuto, Maria Bianchi" + Logout
+
+Cards:
+- Task Oggi (5)
+- Clienti Attivi (8)
+- Approvazioni Pending (3)
+
+Lista task prioritizzati
+Lista clienti con quick actions
+BOSS:
+Header: "Benvenuto, Luca Verdi" + Logout
+
+Cards:
+- Revenue Mensile (€18.500)
+- Clienti Attivi (8)
+- Team Utilization (78%)
+
+Grafici mock (placeholder o semplici bar charts)
+Lista team performance
+💰 PITCH DURANTE DEMO
+Introduzione (30 sec):
+"Vi mostro un'app che ho sviluppato per dimostrare 
+quello che possiamo fare insieme.
+
+È una dashboard multi-role per agenzie marketing.
+
+Tre viste: cliente, team, boss.
+
+Vediamole tutte e tre..."
+CLIENT View (1 min):
+"Ecco come i vostri clienti vedrebbero i loro progetti.
+
+Trasparenza totale: budget spent, progress, deadline.
+
+Loro non vi chiamano più per chiedere 'a che punto siamo?'
+
+Tutto self-service ma controllato da voi."
+TEAM View (1 min):
+"I vostri account manager vedono tutti i clienti qui.
+
+Task prioritizzati, content calendar, tutto centralizzato.
+
+Zero più caos WhatsApp o email perse.
+
+Esempio: drag un task da To Do a Done → cliente vede update."
+BOSS View (1 min):
+"Voi vedete numeri per decisioni strategiche.
+
+Revenue, forecast, team performance.
+
+Non operatività quotidiana, solo KPI che contano.
+
+Dashboard decisionale, non gestionale."
+Close (30 sec):
+"Questo è un esempio di cosa posso fare per voi.
+
+Timeline: 3-4 settimane
+Setup: €4.500
+Maintenance: €200/mese
+
+Possiamo customizzare su vostro workflow.
+
+Interessati a parlarne?"
+🚀 DEPLOYMENT
+Opzione A: Vercel (raccomandato):
 npm run build
-
-# Preview build
-npm run preview
-
-# Lint
-npm run lint
-🌐 DEPLOYMENT
-Vercel (Automatico)
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-
-# Deploy production
 vercel --prod
-URL Temporaneo: https://mister-lavaggio-rebuild.vercel.app
-Environment Variables (Vercel)
-VITE_EMAILJS_SERVICE_ID=xxx
-VITE_EMAILJS_TEMPLATE_ID=xxx
-VITE_EMAILJS_PUBLIC_KEY=xxx
-🗓 ROADMAP
-Fase 1: Setup & Analisi ✅
-[x] Analisi sito attuale
-[x] Setup progetto base
-[x] Configurazione Tailwind
-[ ] Estrazione Design System completo
-[ ] Componenti UI base (Button, Card, Container)
-Fase 2: Layout & Navigation 🚧
-[ ] Header responsive
-[ ] Footer completo
-[ ] Menu mobile
-[ ] Layout wrapper
-Fase 3: Homepage 🚧
-[ ] Hero section
-[ ] Come Funziona (3 step)
-[ ] Griglia Servizi
-[ ] Testimonials
-[ ] CTA finale
-[ ] Test responsive
-Fase 4: Pagine Servizi & Aziende ⬜
-[ ] Pagina Servizi
-[ ] Pagina Aziende
-[ ] Form contatto funzionante
-Fase 5: Prenotazione & Form ⬜
-[ ] Pagina Prenota Ora
-[ ] Form prenotazione completo
-[ ] Integrazione EmailJS
-[ ] Validazione avanzata
-Fase 6: Pagine Secondarie ⬜
-[ ] Chi Siamo
-[ ] News/Blog
-[ ] Lavora Con Noi
-Fase 7: Ottimizzazioni ⬜
-[ ] Lazy loading immagini
-[ ] Code splitting
-[ ] Ottimizzazione font
-[ ] Cache headers
-Fase 8: Testing & Deploy ⬜
-[ ] Test cross-browser
-[ ] Test mobile devices
-[ ] PageSpeed audit
-[ ] Deploy production
-[ ] Documentazione comparativa
-📝 CONVENZIONI CODICE
-Naming
-// Components: PascalCase
-export default function ServiceCard() {}
-
-// Files: match component name
-ServiceCard.jsx
-
-// Props: camelCase
-<Button variant="primary" size="lg" />
-
-// CSS classes: Tailwind utility-first
-className="px-4 py-2 bg-blue-600"
-Struttura Componenti
-// Import ordine:
-// 1. React
-// 2. Third-party
-// 3. Local components
-// 4. Utils
-// 5. Assets
-
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Button from '../ui/Button';
-import { sendEmail } from '../../utils/emailService';
-import logo from '../../assets/logo.svg';
-
-export default function ComponentName({ prop1, prop2 }) {
-  // 1. Hooks
-  const [state, setState] = useState(false);
-  
-  // 2. Handlers
-  const handleClick = () => {};
-  
-  // 3. Render
-  return (
-    <div>
-      {/* JSX */}
-    </div>
-  );
-}
-Commit Messages
-feat: Add homepage hero section
-fix: Mobile menu not closing on link click
-refactor: Extract ServiceCard to separate component
-style: Improve button hover states
-docs: Update README roadmap
-perf: Optimize image loading on homepage
-🎯 OBIETTIVI FINALI
-Al completamento, il sito rebuild dovrà:
-✅ Performance: PageSpeed 90+ su mobile e desktop
-✅ Contenuti: 100% identici al sito attuale
-✅ Brand: Identity visiva preservata
-✅ Funzionalità: Tutti i form funzionanti
-✅ Responsive: Perfetto su tutti i device
-✅ SEO: Ottimizzato (meta tags, structured data)
-✅ Accessibilità: WCAG 2.1 AA compliance
-✅ Manutenibilità: Codice pulito e documentato
-
-📚 RISORSE
-Documenti di Riferimento
-Sito attuale
-PageSpeed Insights audit
-[Figma/Design mockup](se disponibile)
-Link Utili
-React Docs
-Tailwind CSS
-Vite Docs
-EmailJS Setup
-🔒 LICENSE
-Proprietà di Mister Lavaggio. Tutti i diritti riservati.
-Ultimo aggiornamento: 18 novembre 2025
-Versione: 0.1.0 (Setup iniziale)
+Link: agency-dashboard-demo.vercel.app
+Opzione B: Locale su laptop:
+npm run dev
+Show: localhost:5173 durante meeting
+Opzione C: Build static + USB:
+npm run build
+# Copia cartella dist/ su chiavetta
+# Apri index.html in browser
+⏱️ TIMELINE SVILUPPO
+Oggi (3-4 ore):
+✅ Setup completato (1h)
+⚠️ Core components (1h)
+⚠️ 3 Dashboard views base (1.5h)
+⚠️ Testing + polish (0.5h)
+Domani mattina (buffer):
+Fix bugs
+Test mobile
+Prepare pitch talking points
+Domani pomeriggio:
+🎯 DEMO A MERAVIGLIA LAB
+📝 CHECKLIST PRE-DEMO
+Tecnico:
+[ ] App builds senza errori
+[ ] Tutte e 3 le view caricano
+[ ] Role switching funziona
+[ ] Mobile responsive verificato
+[ ] Deployed su Vercel (link pronto)
+[ ] Backup: npm run dev locale
+Contenuto:
+[ ] Mock data realistici (nomi italiani, €, date)
+[ ] Badge colors consistenti
+[ ] Nessun Lorem Ipsum
+[ ] Screenshot/video backup se demo fail
+Pitch:
+[ ] Talking points memorizzati
+[ ] Pricing stampato (€4.500 + €200/mese)
+[ ] ROI calculation pronta
+[ ] Proposal partnership white-label scritta
+🎯 SUCCESS CRITERIA
+MVP è pronto quando:
+✅ Puoi switchare tra 3 ruoli
+✅ Ogni ruolo mostra dashboard diversa
+✅ Dati mock appaiono correttamente
+✅ UI è pulita e professionale
+✅ Mobile responsive funziona
+✅ Deploy online accessibile
+Demo è successo se:
+Meraviglia Lab capisce value proposition
+Mostrano interesse a partnership white-label
+Chiedono pricing/timeline
+Fissano follow-up meeting
+📂 FILES DA CREARE (Prossima Chat)
+Priority 1 (Blocker per demo):
+src/App.jsx - Router + Protected routes
+src/views/Login.jsx - Role selector
+src/components/layout/Layout.jsx - Main layout
+src/components/layout/Header.jsx - Top bar con logout
+src/components/layout/Sidebar.jsx - Nav menu (opzionale per MVP)
+src/components/ui/Card.jsx
+src/components/ui/Badge.jsx
+src/components/ui/StatCard.jsx
+src/views/client/ClientDashboard.jsx
+src/views/team/TeamDashboard.jsx
+src/views/boss/BossDashboard.jsx
+Priority 2 (Nice to have):
+src/data/mockTasks.js
+src/data/mockReports.js
+src/views/team/TaskBoard.jsx
+Priority 3 (Skip se manca tempo):
+Content Calendar
+Charts/graphs
+Modal components
+🎯 PROSSIMI STEP
+Nella prossima chat:
+Copia questo intero documento come context
+Dì: "Build agency dashboard demo - segui il piano"
+Completa tutti i file Priority 1
+Test rapido
+Deploy
+GO TO DEMO! 🚀
+TUTTO CHIARO. PRODUCTION-READY. PROFESSIONAL.
