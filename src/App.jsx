@@ -4,28 +4,8 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 // ===== PLACEHOLDER COMPONENTS =====
 // Questi verranno sostituiti con i componenti veri
 // Per ora servono solo per testare il routing
+import Login from './views/Login';
 
-const Login = () => (
-  <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
-    <div className="text-center">
-      {/* Logo Meraviglia Lab - carica /public/logo-meraviglia.png */}
-      <img 
-        src="/logo-meraviglia.png" 
-        alt="Meraviglia Lab" 
-        className="h-24 mx-auto mb-8"
-      />
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">
-        Agency Dashboard Demo
-      </h1>
-      <p className="text-gray-600 mb-8">
-        Scegli un ruolo per esplorare la piattaforma
-      </p>
-      <div className="text-sm text-gray-500">
-        Login placeholder - componente completo in arrivo
-      </div>
-    </div>
-  </div>
-);
 
 const Layout = ({ children }) => (
   <div className="min-h-screen bg-gray-50">
