@@ -6,27 +6,10 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 // Per ora servono solo per testare il routing
 import Login from './views/Login';
 import Layout from './components/layout/Layout';
+import ClientDashboard from './views/client/ClientDashboard';
+import TeamDashboard from './views/team/TeamDashboard';
+import BossDashboard from './views/boss/BossDashboard';
 
-const ClientDashboard = () => (
-  <div className="max-w-7xl mx-auto">
-    <h2 className="text-2xl font-bold text-gray-900 mb-4">Client Dashboard</h2>
-    <p className="text-gray-600">Dashboard cliente - placeholder</p>
-  </div>
-);
-
-const TeamDashboard = () => (
-  <div className="max-w-7xl mx-auto">
-    <h2 className="text-2xl font-bold text-gray-900 mb-4">Team Dashboard</h2>
-    <p className="text-gray-600">Dashboard team - placeholder</p>
-  </div>
-);
-
-const BossDashboard = () => (
-  <div className="max-w-7xl mx-auto">
-    <h2 className="text-2xl font-bold text-gray-900 mb-4">Boss Dashboard</h2>
-    <p className="text-gray-600">Dashboard boss - placeholder</p>
-  </div>
-);
 
 // ===== PROTECTED ROUTE COMPONENT =====
 // Protegge le route richiedendo autenticazione
