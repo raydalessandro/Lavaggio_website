@@ -108,5 +108,38 @@ export const mockClients = [
     startDate: "2024-08-01",
     activeProjects: 1,
     totalSpent: 3000
+  },
+  {
+    id: 11,
+    name: "Luxor Fashion Group",
+    logo: "👔",
+    industry: "Fashion & Retail",
+    status: "active",
+    monthlyBudget: 12000,
+    startDate: "2023-09-01",
+    activeProjects: 4,
+    totalSpent: 156000
+  },
+  {
+    id: 12,
+    name: "TechVision Software",
+    logo: "💻",
+    industry: "Software & IT",
+    status: "active",
+    monthlyBudget: 8500,
+    startDate: "2024-02-15",
+    activeProjects: 3,
+    totalSpent: 76500
+  },
+  {
+    id: 13,
+    name: "Gruppo Alberghiero Riviera",
+    logo: "🏨",
+    industry: "Hospitality",
+    status: "active",
+    monthlyBudget: 15000,
+    startDate: "2023-06-10",
+    activeProjects: 5,
+    totalSpent: 247500
   }
 ];
